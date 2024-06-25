@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chargé d'étude</title>
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f8ff; /* Couleur de fond bleu clair */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    #container {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff; /* Fond blanc pour le conteneur principal */
+        padding: 20px;
+        border-radius: 12px; /* Coins arrondis plus grands */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+    }
+    
+    #barre {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 15px;
+        margin-bottom: 20px;
+        background-color: #e1f3fb; /* Fond bleu clair pour la barre */
+        padding: 15px;
+        border-radius: 10px; /* Coins arrondis */
+    }
+    
+    #barre div {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        transition: background-color 0.3s ease;
+    }
+    
+    #barre div:hover {
+        background-color: #eaeaea;
+    }
+    
+    #listefeu, #lesbout {
+        margin-top: 20px;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    button {
+        background-color: #4da3ff; /* Boutons de couleur bleu clair */
+        color: #fff; /* Texte blanc */
+        border: none;
+        padding: 12px 25px;
+        cursor: pointer;
+        margin-right: 10px;
+        border-radius: 6px; /* Coins arrondis plus grands */
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #3688e3; /* Couleur légèrement plus foncée au survol */
+    }
+    
+    ul, ol {
+        margin-top: 10px; /* Espacement en haut */
+        margin-bottom: 10px; /* Espacement en bas */
+        padding-left: 0; /* Pas de marge intérieure à gauche */
+        list-style: none; /* Supprimer les puces par défaut */
+    }
+    
+    ul li, ol li {
+        margin-bottom: 10px; /* Espacement entre les éléments de liste */
+        padding: 10px;
+        background-color: #f5f5f5; /* Couleur de fond pour les éléments de liste */
+        border-radius: 6px;
+        border: 1px solid #ddd; /* Bordure pour les éléments de liste */
+        display: flex;
+        align-items: center; /* Aligner les éléments au centre verticalement */
+        transition: background-color 0.3s ease;
+    }
+    
+    ul li:hover, ol li:hover {
+        background-color: #e0e0e0;
+    }
+    
+    input[type="checkbox"], input[type="radio"] {
+        margin-right: 10px; /* Espacement à droite de chaque case à cocher */
+        width: 20px; /* Largeur de la case à cocher */
+        height: 20px; /* Hauteur de la case à cocher */
+    }
+    
+    label {
+        margin-bottom: 10px; /* Espacement entre chaque groupe de case à cocher */
+        font-weight: bold;
+        display: flex;
+        align-items: center; /* Aligner les éléments au centre verticalement */
+    }
+    
+    textarea {
+        width: 97%;
+        height: 120px;
+        resize: vertical; /* Redimensionnement vertical */
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px; /* Coins arrondis plus grands */
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+    }
+    
+    textarea:focus {
+        border-color: #4da3ff;
+    }
+    
+    /* Table Styles */
+    .table-container {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    .table-container th, .table-container td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    
+    .table-container th {
+        background-color: #f0f8ff;
+        font-weight: bold;
+    }
+    
+    /* Title Styles */
+    h1, h2, h3, h4, h5, h6 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+    /* Select Styles */
+        #personneType {
+            display: block;
+            width: 97%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+        
+        #personneType:focus {
+            border-color: #4da3ff;
+        }
+      #bouttons{
+        margin-top : 5px
+      }
+      .highlight {
+        background-color: #ffe6e6; /* Couleur de fond pour la surbrillance */
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="barre">
+            <div>ID Client</div>
+            <div>Raison Sociale</div>
+            <div>Agence</div>
+            <div>Date Réception</div>
+            <div>Numéro de Compte</div>
+            <div id="idclient"></div>
+            <div id="raisonsocial"></div>
+            <div id="agence"></div>
+            <div id="datereception"></div>
+            <div id="numerocompte"></div>
+        </div>
+        
+        <button id="suivant">Suivant</button>
+        
+        <div id="listefeu">
+            <label for="personneType">Type de Personne:</label>
+            <select id="personneType" name="personne" onchange="showListe(this.value)">
+                <option value="">Sélectionnez</option>
+                <option value="morale">Personne Morale</option>
+                <option value="physique">Personne Physique</option>
+            </select>
+            <div id="listeMorale" class="hidden">
+                <table class="table-container">
+                    <thead>
+                        <tr>
+                            <th>Élément</th>
+                            <th>Existe</th>
+                            <th>N'existe pas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>• Copie de la pièce d'identité biométrique du Gérant/passeport pour les étrangers.</td>
+                            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+                        </tr>
+        <tr>
+            <td>
+                • Copie de la piéce d'identité biométrique du Gérant/passeport pour les étrangers et la carte de séjour en cour validité.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe" onchange="highlightRow(this)"></td>
+            <td><input type="checkbox" name="element1" value="nexistepas" onchange="highlightRow(this)"></td>
+        </tr>
+        <tr>
+            <td>
+                • Statut initial et ses modificatifs.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+             <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+               • Copie du Registre de commerce et/ou copie de l'agrément présenté, le cas échéant.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+               • Carte d'artisanat pour un artisan.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+                • Un justificatif d'activité pour les professions libérales (Copie d'Agrément et Copie d'Inscription au tableau d'ordre).
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+               • Lettre d'engagement remplir par la relation et spécimen de signature.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+                • SYRON KYC pour (société, gérants  associées) et sa fiche approprie remplir par la relation (questionnaire).
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+                •FATCA.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+               • Consultation Fichier clientèle et Interdit chéquier.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+              • Copie du Numéro d'Identification Fiscale (NIF) et Numéro d'Identification Statistiques (NIS) présentés.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+                *• Décision de désignation des personnes habilitées à faire fonctionner le compte (Bac 14)/Procuration notariée pour tiers / BAC 14.
+            </td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+        </tr>
+        <tr>
+            <td>
+                • Consultation Hors périmètre.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+               • Résidence. </td>
+               <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+               • Avis de la DOPEX ou préalable pour Import/Export et Personnes Etranger.</td>
+               <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                <p>Pour l'Association :</p>
+               • Copie de la pièce d'identité biométrique du Président et trésorier.</td>
+               <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Copie de l'agrément de l'association délivré par l'autorité compétente et publier dans un journal quotidien.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Statuts de l'association et liste des personnes chargées de son administration et ses modificatifs.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+        </tbody>
+        </table>
+            </div>
+            <div id="listePhysique" class="hidden">
+                <table class="table-container">
+                    <thead>
+                        <tr>
+                            <th>Élément</th>
+                            <th>Existe</th>
+                            <th>N'existe pas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <tr>
+                    <td>
+                        • Copie de la piéce d'identité biométrique du Gérant/passeport pour les étrangers.
+                    </td>
+                    <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+                </tr>
+                <tr>
+                    <td>
+                • Demande d'ouverture compte connaissance du client et la convention de compte.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Copie du Registre de commerce et/ou copie de l'agrément présenté, le cas échéant.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Carte d'artisanat pour un artisan.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+              • Un justificatif d'activité pour les professions libérales (Copie d'Agrément et Copie d'Inscription au tableau d'ordre ).</td>
+              <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Lettre d'engagement remplir par la relation et spécimen de signature (CA109).</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • SYRON KYC pour (société, gérants  associées) et sa fiche approprie remplir par la relation (questionnaire).</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+               •FATCA.</td>
+               <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+             • Consultation Fichier clientèle et Interdit chéquier.</td>
+             <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Décision de désignation des personnes habilitées à faire fonctionner le compte (Bac 14)/Procuration notariée pour tiers / BAC 14.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+            • Copie du Numéro d'Identification Fiscale (NIF) et Numéro d'Identification Statistiques (NIS) présentés.</td>
+            <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+               • Consultation Hors périmètre.</td>
+               <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Résidence.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+                • Avis de la DOPEX ou préalable pour Import/Export et Personnes Etranger.</td>
+                <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+            <tr>
+                <td>
+               • Contrat de travail , Autorisation de travail pour l'étranger et carte de séjour en cour de validité.</td>
+               <td><input type="checkbox" name="element1" value="existe"></td>
+                            <td><input type="checkbox" name="element1" value="nexistepas"></td>
+            </tr>
+        </tbody>
+        </table>
+                <br></br>
+            </div>
+            <div id="bouttons">
+            <button id="conforme">Conforme</button>
+            <button id="nonconforme" onclick="showNonConforme()">Non Conforme</button>
+            <button id="valider">Valider</button>
+            </div>
+        </div>
+        
+        <div id="nonConformeListe" class="hidden">
+            <p>Pourquoi n'est-il pas conforme?</p>
+            <label><input type="checkbox" name="reason" value="reason1"> Raison 1</label><br>
+            <label><input type="checkbox" name="reason" value="reason2"> Raison 2</label><br>
+            <label><input type="checkbox" name="reason" value="autre" onclick="showAutre()"> Autre</label><br>
+            <textarea id="autreTexte" class="hidden" placeholder="Écrivez ici..."></textarea><br>
+            <button id="valider">Valider</button>
+        </div>
+    </div>
+    <script>
+        function showListe(type) {
+            document.getElementById('listeMorale').classList.add('hidden');
+            document.getElementById('listePhysique').classList.add('hidden');
+            if (type === 'morale') {
+                document.getElementById('listeMorale').classList.remove('hidden');
+            } else if (type === 'physique') {
+                document.getElementById('listePhysique').classList.remove('hidden');
+            }
+        }
+        function highlightRow(checkbox) {
+            const row = checkbox.closest('tr'); // Trouver la ligne parente (<tr>) de la case à cocher
+            if (checkbox.value === "nexistepas" && checkbox.checked) {
+                row.classList.add('highlight'); // Ajouter la classe highlight si "N'existe pas" est coché
+            } else {
+                row.classList.remove('highlight'); // Retirer la classe highlight sinon
+            }
+        }
+    
+
+        function showNonConforme() {
+            document.getElementById('nonConformeListe').classList.remove('hidden');
+        }
+
+        function showAutre() {
+            document.getElementById('autreTexte').classList.remove('hidden');
+        }
+
+        document.getElementById('suivant').addEventListener('click', function() {
+            // Logic to fetch and display next profile from the database
+        });
+    </script>
+</body>
+</html>

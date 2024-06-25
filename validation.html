@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* Couleur de fond bleu clair */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff; /* Fond blanc pour le conteneur principal */
+            padding: 20px;
+            border-radius: 12px; /* Coins arrondis plus grands */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+        }
+        
+        #barre {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            margin-bottom: 20px;
+            background-color: #e1f3fb; /* Fond bleu clair pour la barre */
+            padding: 15px;
+            border-radius: 10px; /* Coins arrondis */
+        }
+        
+        #barre div {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+        
+        #barre div:hover {
+            background-color: #eaeaea;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="barre">
+            <div>ID Client</div>
+            <div>Raison Sociale</div>
+            <div>Agence</div>
+            <div>Date Réception</div>
+            <div>Numéro de Compte</div>
+            <div id="idclient"></div>
+            <div id="raisonsocial"></div>
+            <div id="agence"></div>
+            <div id="datereception"></div>
+            <div id="numerocompte"></div>
+        </div>
+        
+        <button id="suivant">Suivant</button>
+</body>
+</html>

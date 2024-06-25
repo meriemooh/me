@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier Information Form</title>
+<style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        
+        form {
+            background-color: #e6f7ff; /* Lighter blue */
+            border: 2px solid #99ccff; /* Border blue */
+            border-radius: 10px;
+            padding: 20px;
+            width:500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #336699; /* Darker blue */
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #336699; /* Darker blue */
+        }
+        
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #99ccff; /* Border blue */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #ffffff; /* White background */
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="date"]:focus {
+            border-color: #6699cc; /* Focus border blue */
+            outline: none;
+        }
+        
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6699cc; /* Button blue */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #336699; /* Hover blue */
+        }
+        
+    </style>
+</head>
+<body>
+    <form method="POST" action="/submit">
+        <label for="date_cloture">Date de récéption:</label>
+        <input type="date" id="date_rec" name="date_rec">
+
+        <label for="idclient">ID Client:</label>
+        <input type="text" id="idclient" name="idclient" required>
+        
+        <label for="raison_sociale">Raison Sociale:</label>
+        <input type="text" id="raison_sociale" name="raison_sociale" required>
+        
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required>
+        
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" required>
+        
+        <label for="num_compte">Numéro de Compte:</label>
+        <input type="text" id="num_compte" name="num_compte" required>
+        
+        <label for="agence">Agence:</label>
+        <input type="text" id="agence" name="agence" required>
+        
+        <label for="activite">Activité:</label>
+        <input type="text" id="activite" name="activite" required>
+        
+        <label for="date_ouverture">Date d'ouverture:</label>
+        <input type="date" id="date_ouverture" name="date_ouverture">
+        
+        <label for="date_cloture">Date de clôture:</label>
+        <input type="date" id="date_cloture" name="date_cloture">
+        
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse">
+        
+        <label for="numerotel">Numéro de Téléphone:</label>
+        <input type="text" id="numerotel" name="numerotel">
+        
+        <label for="cause">Cause:</label>
+        <input type="text" id="cause" name="cause">
+        
+        <label for="num_reg_com">Numéro de Registre de Commerce:</label>
+        <input type="text" id="num_reg_com" name="num_reg_com">
+        
+        <label for="date_reg_com">Date de Registre de Commerce:</label>
+        <input type="date" id="date_reg_com" name="date_reg_com">
+        
+        <label for="code_agence">Code Agence:</label>
+        <input type="text" id="code_agence" name="code_agence">
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
