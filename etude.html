@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chargé d'étude</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <style>
     body {
         font-family: 'Arial', sans-serif;
@@ -52,7 +53,29 @@
     .hidden {
         display: none;
     }
-    
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #0056b3; /* Couleur bleue pour le lien */
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    a:hover {
+        color: #003d80; /* Couleur bleue plus sombre au survol */
+    }
+
+    .icon {
+        font-size: 24px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    .nav-text {
+        vertical-align: middle;
+    }
     button {
         background-color: #4da3ff; /* Boutons de couleur bleu clair */
         color: #fff; /* Texte blanc */
@@ -161,9 +184,7 @@
       #bouttons{
         margin-top : 5px
       }
-      .highlight {
-        background-color: #ffe6e6; /* Couleur de fond pour la surbrillance */
-    }
+     
     </style>
 </head>
 <body>
@@ -442,7 +463,12 @@
             <textarea id="autreTexte" class="hidden" placeholder="Écrivez ici..."></textarea><br>
             <button id="valider">Valider</button>
         </div>
+        <a href="{{ url_for('index') }}">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>
     </div>
+
     <script>
         function showListe(type) {
             document.getElementById('listeMorale').classList.add('hidden');
@@ -453,16 +479,7 @@
                 document.getElementById('listePhysique').classList.remove('hidden');
             }
         }
-        function highlightRow(checkbox) {
-            const row = checkbox.closest('tr'); // Trouver la ligne parente (<tr>) de la case à cocher
-            if (checkbox.value === "nexistepas" && checkbox.checked) {
-                row.classList.add('highlight'); // Ajouter la classe highlight si "N'existe pas" est coché
-            } else {
-                row.classList.remove('highlight'); // Retirer la classe highlight sinon
-            }
-        }
-    
-
+        
         function showNonConforme() {
             document.getElementById('nonConformeListe').classList.remove('hidden');
         }
