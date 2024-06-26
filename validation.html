@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <title>Validation</title>
     <style>
         body {
@@ -22,9 +23,25 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
         }
         
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        #logo-container {
+            flex-grow: 1;
+        }
+        
+        #logout-container {
+            flex-shrink: 0;
+        }
+        
+        
         #barre {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             grid-template-rows: repeat(2, auto);
             gap: 15px;
             margin-bottom: 20px;
@@ -44,26 +61,61 @@
         #barre div:hover {
             background-color: #eaeaea;
         }
-         button {
-        background-color: #4da3ff; /* Boutons de couleur bleu clair */
-        color: #fff; /* Texte blanc */
-        border: none;
-        padding: 12px 25px;
-        cursor: pointer;
-        margin-right: 10px;
-        border-radius: 6px; /* Coins arrondis plus grands */
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    }
-    
-    button:hover {
-        background-color: #3688e3; /* Couleur légèrement plus foncée au survol */
-    }
+        button {
+            background-color: #4da3ff; /* Boutons de couleur bleu clair */
+            color: #fff; /* Texte blanc */
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 6px; /* Coins arrondis plus grands */
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #3688e3; /* Couleur légèrement plus foncée au survol */
+        }
+        img {
+            width: 250px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: #0056b3; /* Couleur bleue pour le lien */
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #003d80; /* Couleur bleue plus sombre au survol */
+        }
+        
+        .icon {
+            font-size: 24px;
+            vertical-align: middle;
+        }
+        
+        .nav-text {
+            vertical-align: middle;
+        }
         
     </style>
 </head>
 <body>
     <div id="container">
+        <div id="header">
+            <div id="logo-container">
+                <img id="logo-img" src="cropped.png" alt="logo">
+            </div>
+            <div id="logout-container">
+                <a href="{{ url_for('index') }}">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
         <div id="barre">
             <div>ID Client</div>
             <div>Raison Sociale</div>
