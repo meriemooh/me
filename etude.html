@@ -6,167 +6,183 @@
     <title>chargé d'étude</title>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f0f8ff; /* Couleur de fond bleu clair */
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    #container {
-        width: 80%;
-        margin: 20px auto;
-        background-color: #fff; /* Fond blanc pour le conteneur principal */
-        padding: 20px;
-        border-radius: 12px; /* Coins arrondis plus grands */
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
-    }
-    
-    #barre {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, auto);
-        gap: 15px;
-        margin-bottom: 20px;
-        background-color: #e1f3fb; /* Fond bleu clair pour la barre */
-        padding: 15px;
-        border-radius: 10px; /* Coins arrondis */
-    }
-    
-    #barre div {
-        padding: 15px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        background-color: #f9f9f9;
-        transition: background-color 0.3s ease;
-    }
-    
-    #barre div:hover {
-        background-color: #eaeaea;
-    }
-    
-    #listefeu, #lesbout {
-        margin-top: 20px;
-    }
-    
-    .hidden {
-        display: none;
-    }
-    a {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: #0056b3; /* Couleur bleue pour le lien */
-        font-weight: bold;
-        font-size: 16px;
-        transition: color 0.3s;
-    }
-
-    a:hover {
-        color: #003d80; /* Couleur bleue plus sombre au survol */
-    }
-
-    .icon {
-        font-size: 24px;
-        margin-right: 5px;
-        vertical-align: middle;
-    }
-
-    .nav-text {
-        vertical-align: middle;
-    }
-    button {
-        background-color: #4da3ff; /* Boutons de couleur bleu clair */
-        color: #fff; /* Texte blanc */
-        border: none;
-        padding: 12px 25px;
-        cursor: pointer;
-        margin-right: 10px;
-        border-radius: 6px; /* Coins arrondis plus grands */
-        font-size: 16px;
-        transition: background-color 0.3s ease;
-    }
-    
-    button:hover {
-        background-color: #3688e3; /* Couleur légèrement plus foncée au survol */
-    }
-    
-    ul, ol {
-        margin-top: 10px; /* Espacement en haut */
-        margin-bottom: 10px; /* Espacement en bas */
-        padding-left: 0; /* Pas de marge intérieure à gauche */
-        list-style: none; /* Supprimer les puces par défaut */
-    }
-    
-    ul li, ol li {
-        margin-bottom: 10px; /* Espacement entre les éléments de liste */
-        padding: 10px;
-        background-color: #f5f5f5; /* Couleur de fond pour les éléments de liste */
-        border-radius: 6px;
-        border: 1px solid #ddd; /* Bordure pour les éléments de liste */
-        display: flex;
-        align-items: center; /* Aligner les éléments au centre verticalement */
-        transition: background-color 0.3s ease;
-    }
-    
-    ul li:hover, ol li:hover {
-        background-color: #e0e0e0;
-    }
-    
-    input[type="checkbox"], input[type="radio"] {
-        margin-right: 10px; /* Espacement à droite de chaque case à cocher */
-        width: 20px; /* Largeur de la case à cocher */
-        height: 20px; /* Hauteur de la case à cocher */
-    }
-    
-    label {
-        margin-bottom: 10px; /* Espacement entre chaque groupe de case à cocher */
-        font-weight: bold;
-        display: flex;
-        align-items: center; /* Aligner les éléments au centre verticalement */
-    }
-    
-    textarea {
-        width: 97%;
-        height: 120px;
-        resize: vertical; /* Redimensionnement vertical */
-        padding: 10px;
-        margin-top: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px; /* Coins arrondis plus grands */
-        font-size: 14px;
-        transition: border-color 0.3s ease;
-    }
-    
-    textarea:focus {
-        border-color: #4da3ff;
-    }
-    
-    /* Table Styles */
-    .table-container {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    
-    .table-container th, .table-container td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: left;
-    }
-    
-    .table-container th {
-        background-color: #f0f8ff;
-        font-weight: bold;
-    }
-    
-    /* Title Styles */
-    h1, h2, h3, h4, h5, h6 {
-        color: #333;
-        margin-bottom: 20px;
-    }
-    /* Select Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff; /* Couleur de fond bleu clair */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff; /* Fond blanc pour le conteneur principal */
+            padding: 20px;
+            border-radius: 12px; /* Coins arrondis plus grands */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+        }
+        
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        #logo-container {
+            flex-grow: 1;
+        }
+        
+        #logout-container {
+            flex-shrink: 0;
+        }
+        
+        #barre {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            margin-bottom: 20px;
+            background-color: #e1f3fb; /* Fond bleu clair pour la barre */
+            padding: 15px;
+            border-radius: 10px; /* Coins arrondis */
+        }
+        
+        #barre div {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s ease;
+        }
+        
+        #barre div:hover {
+            background-color: #eaeaea;
+        }
+        
+        #listefeu, #lesbout {
+            margin-top: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: #0056b3; /* Couleur bleue pour le lien */
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #003d80; /* Couleur bleue plus sombre au survol */
+        }
+        
+        .icon {
+            font-size: 24px;
+            vertical-align: middle;
+        }
+        
+        .nav-text {
+            vertical-align: middle;
+        }
+        
+        button {
+            background-color: #4da3ff; /* Boutons de couleur bleu clair */
+            color: #fff; /* Texte blanc */
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 6px; /* Coins arrondis plus grands */
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #3688e3; /* Couleur légèrement plus foncée au survol */
+        }
+        
+        ul, ol {
+            margin-top: 10px; /* Espacement en haut */
+            margin-bottom: 10px; /* Espacement en bas */
+            padding-left: 0; /* Pas de marge intérieure à gauche */
+            list-style: none; /* Supprimer les puces par défaut */
+        }
+        
+        ul li, ol li {
+            margin-bottom: 10px; /* Espacement entre les éléments de liste */
+            padding: 10px;
+            background-color: #f5f5f5; /* Couleur de fond pour les éléments de liste */
+            border-radius: 6px;
+            border: 1px solid #ddd; /* Bordure pour les éléments de liste */
+            display: flex;
+            align-items: center; /* Aligner les éléments au centre verticalement */
+            transition: background-color 0.3s ease;
+        }
+        
+        ul li:hover, ol li:hover {
+            background-color: #e0e0e0;
+        }
+        
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 10px; /* Espacement à droite de chaque case à cocher */
+            width: 20px; /* Largeur de la case à cocher */
+            height: 20px; /* Hauteur de la case à cocher */
+        }
+        
+        label {
+            margin-bottom: 10px; /* Espacement entre chaque groupe de case à cocher */
+            font-weight: bold;
+            display: flex;
+            align-items: center; /* Aligner les éléments au centre verticalement */
+        }
+        
+        textarea {
+            width: 97%;
+            height: 120px;
+            resize: vertical; /* Redimensionnement vertical */
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px; /* Coins arrondis plus grands */
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        textarea:focus {
+            border-color: #4da3ff;
+        }
+        
+        /* Table Styles */
+        .table-container {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .table-container th, .table-container td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .table-container th {
+            background-color: #f0f8ff;
+            font-weight: bold;
+        }
+        
+        /* Title Styles */
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        /* Select Styles */
         #personneType {
             display: block;
             width: 97%;
@@ -181,14 +197,31 @@
         #personneType:focus {
             border-color: #4da3ff;
         }
-      #bouttons{
-        margin-top : 5px
-      }
-     
+        
+        #bouttons {
+            margin-top: 5px;
+        }
+        
+        img {
+            width: 250px;
+        }
+        
     </style>
 </head>
 <body>
     <div id="container">
+        <div id="header">
+            <div id="logo-container">
+                <img id="logo-img" src="cropped.png" alt="logo">
+            </div>
+            <div id="logout-container">
+                <a href="{{ url_for('index') }}">
+                    <i class='bx bx-log-out icon'></i>
+                    <span class="text nav-text">Logout</span>
+                </a>
+            </div>
+        </div>
+
         <div id="barre">
             <div>ID Client</div>
             <div>Raison Sociale</div>
@@ -463,10 +496,6 @@
             <textarea id="autreTexte" class="hidden" placeholder="Écrivez ici..."></textarea><br>
             <button id="valider">Valider</button>
         </div>
-        <a href="{{ url_for('index') }}">
-            <i class='bx bx-log-out icon'></i>
-            <span class="text nav-text">Logout</span>
-          </a>
     </div>
 
     <script>
@@ -494,3 +523,4 @@
     </script>
 </body>
 </html>
+
