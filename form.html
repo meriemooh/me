@@ -4,76 +4,125 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dossier Information Form</title>
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff; /* Light blue background */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-           
-        }
-        
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f9; /* Light grey background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    
+    form {
+        background-color: #ffffff; /* White background */
+        border: 1px solid #d1d1d1; /* Light grey border */
+        border-radius: 8px;
+        padding: 30px;
+        width: 450px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+        text-align: center;
+        color: #0056b3; /* Dark blue */
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #333333; /* Dark grey */
+        font-weight: 600;
+    }
+    
+    input[type="text"],
+    input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #d1d1d1; /* Light grey border */
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f9f9f9; /* Light background */
+        margin-bottom: 15px;
+        font-size: 14px;
+        transition: border-color 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="date"]:focus {
+        border-color: #0056b3; /* Focus border blue */
+        outline: none;
+        background-color: #ffffff; /* White background on focus */
+    }
+  img{
+    width:450px;
+    margin-left:20px;
+  }
+    
+    h2 {
+        text-align: center;
+        color: #0056b3; /* Dark blue */
+        margin-bottom: 20px;
+    }
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #0056b3; /* Couleur bleue pour le lien */
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    a:hover {
+        color: #003d80; /* Couleur bleue plus sombre au survol */
+    }
+
+    .icon {
+        font-size: 24px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    .nav-text {
+        vertical-align: middle;
+    }
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background-color: #0056b3; /* Button blue */
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #003d80; /* Darker blue */
+    }
+    
+    @media (max-width: 500px) {
         form {
-            background-color: #e6f7ff; /* Lighter blue */
-            border: 2px solid #99ccff; /* Border blue */
-            border-radius: 10px;
+            width: 90%;
             padding: 20px;
-            width:500px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
-        h2 {
-            text-align: center;
-            color: #336699; /* Darker blue */
-        }
-        
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            color: #336699; /* Darker blue */
-        }
-        
-        input[type="text"],
-        input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #99ccff; /* Border blue */
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #ffffff; /* White background */
-            margin-bottom: 15px;
-            transition: border-color 0.3s;
-        }
-        
-        input[type="text"]:focus,
-        input[type="date"]:focus {
-            border-color: #6699cc; /* Focus border blue */
-            outline: none;
-        }
-        
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #6699cc; /* Button blue */
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        input[type="submit"]:hover {
-            background-color: #336699; /* Hover blue */
-        }
+    }
         
     </style>
+    
 </head>
 <body>
-    <form method="POST" action="/submit">
+    <form method="POST" action="/secretaire">
+        <img src="cropped.png" alt="logo">
+       <!--<img src="{{ url_for('static', filename='cropped.png') }}" alt="logo">-->
+        <h2>Dossier Information Form</h2>
         <label for="date_cloture">Date de récéption:</label>
         <input type="date" id="date_rec" name="date_rec">
 
@@ -123,6 +172,11 @@
         <input type="text" id="code_agence" name="code_agence">
         
         <input type="submit" value="Submit">
+        <a href="{{ url_for('index') }}">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>
     </form>
+    
 </body>
 </html>
