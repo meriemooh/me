@@ -140,22 +140,25 @@
             margin-top: -50px; /* Décale l'image vers le haut */
             border-radius: 50%; /* Assure que l'image est arrondie */
             margin-left : 60px;
+            margin-bottom:20px;
+            
         }
         h2{
+            margin-top:20px;
             margin-left : 190px;   
         }
     </style>
 
-    </style>
+    
 </head>
 <body>
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form action="{{ url_for('form') }}" method="GET">
-        
-        <img id="username-img" src="cropped.png" alt="Décoration">
+    <form action="{{ url_for('login') }}" method="POST">
+        <img id="logo-img" src="cropped.png" alt="logo">
+       <!--<img src="{{ url_for('static', filename='cropped.png') }}" alt="logo">-->
         <h2  > Log in Here</h2>
         <label for="username">Folio</label>
         <input type="text" placeholder="Email or Phone" id="username" name="username" required>
@@ -166,4 +169,5 @@
         <button type="submit" class="btn">Log In</button>
     </form>
 </body>
+
 </html>
