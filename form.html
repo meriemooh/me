@@ -14,9 +14,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-       
     }
-    
+
     form {
         background-color: #ffffff; /* White background */
         border: 1px solid #d1d1d1; /* Light grey border */
@@ -25,22 +24,23 @@
         width: 450px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-    
+
     h2 {
         text-align: center;
         color: #0056b3; /* Dark blue */
         margin-bottom: 20px;
     }
-    
+
     label {
         display: block;
         margin: 10px 0 5px;
         color: #333333; /* Dark grey */
         font-weight: 600;
     }
-    
+
     input[type="text"],
-    input[type="date"] {
+    input[type="date"],
+    select {
         width: 100%;
         padding: 10px;
         border: 1px solid #d1d1d1; /* Light grey border */
@@ -51,46 +51,20 @@
         font-size: 14px;
         transition: border-color 0.3s;
     }
-    
+
     input[type="text"]:focus,
-    input[type="date"]:focus {
+    input[type="date"]:focus,
+    select:focus {
         border-color: #0056b3; /* Focus border blue */
         outline: none;
         background-color: #ffffff; /* White background on focus */
     }
-  img{
-    width:450px;
-    margin-left:20px;
-  }
-    
-    h2 {
-        text-align: center;
-        color: #0056b3; /* Dark blue */
-        margin-bottom: 20px;
-    }
-    a {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        color: #0056b3; /* Couleur bleue pour le lien */
-        font-weight: bold;
-        font-size: 16px;
-        transition: color 0.3s;
+
+    img {
+        width: 450px;
+        margin-left: 20px;
     }
 
-    a:hover {
-        color: #003d80; /* Couleur bleue plus sombre au survol */
-    }
-
-    .icon {
-        font-size: 24px;
-        margin-right: 5px;
-        vertical-align: middle;
-    }
-
-    .nav-text {
-        vertical-align: middle;
-    }
     input[type="submit"] {
         width: 100%;
         padding: 12px;
@@ -103,31 +77,52 @@
         cursor: pointer;
         transition: background-color 0.3s;
     }
-    
+
     input[type="submit"]:hover {
         background-color: #003d80; /* Darker blue */
     }
-    
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #0056b3; /* Blue link color */
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    a:hover {
+        color: #003d80; /* Darker blue on hover */
+    }
+
+    .icon {
+        font-size: 24px;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    .nav-text {
+        vertical-align: middle;
+    }
+
     @media (max-width: 500px) {
         form {
             width: 90%;
             padding: 20px;
         }
     }
-        
-    </style>
-    
+</style>
 </head>
 <body>
     <form method="POST" action="/secretaire">
-        <img src="cropped.png" alt="logo">
-       <!--<img src="{{ url_for('static', filename='cropped.png') }}" alt="logo">-->
+        <img src="{{ url_for('static', filename='cropped.png') }}" alt="logo">
         <h2>Dossier Information Form</h2>
-        <label for="date_cloture">Date de récéption:</label>
-        <input type="date" id="date_rec" name="date_rec">
+        <label for="date_reception">Date de récéption:</label>
+        <input type="date" id="date_reception" name="date_reception">
 
-        <label for="idclient">ID Client:</label>
-        <input type="text" id="idclient" name="idclient" required>
+        <label for="id_client">ID Client:</label>
+        <input type="text" id="id_client" name="id_client" required>
         
         <label for="raison_sociale">Raison Sociale:</label>
         <input type="text" id="raison_sociale" name="raison_sociale" required>
@@ -142,34 +137,38 @@
         <input type="text" id="num_compte" name="num_compte" required>
         
         <label for="agence">Agence:</label>
-        <input type="text" id="agence" name="agence" required>
+        <select id="agence" name="agence" required>
+            <!-- Options will be populated by JavaScript -->
+        </select>
+        
+        <label for="code_agence">Code Agence:</label>
+        <select id="code_agence" name="code_agence" required>
+            <!-- Options will be populated by JavaScript -->
+        </select>
         
         <label for="activite">Activité:</label>
         <input type="text" id="activite" name="activite" required>
         
         <label for="date_ouverture">Date d'ouverture:</label>
-        <input type="date" id="date_ouverture" name="date_ouverture">
+        <input type="date" id="date_ouverture" name="date_ouverture" required>
         
-        <label for="date_cloture">Date de clôture:</label>
+        <label for="date_cloture">Date de Clôture:</label>
         <input type="date" id="date_cloture" name="date_cloture">
-        
-        <label for="adresse">Adresse:</label>
-        <input type="text" id="adresse" name="adresse">
-        
-        <label for="numerotel">Numéro de Téléphone:</label>
-        <input type="text" id="numerotel" name="numerotel">
         
         <label for="cause">Cause:</label>
         <input type="text" id="cause" name="cause">
         
-        <label for="num_reg_com">Numéro de Registre de Commerce:</label>
-        <input type="text" id="num_reg_com" name="num_reg_com">
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse" required>
         
-        <label for="date_reg_com">Date de Registre de Commerce:</label>
-        <input type="date" id="date_reg_com" name="date_reg_com">
+        <label for="numerotel">Numéro de Téléphone:</label>
+        <input type="text" id="numerotel" name="numerotel" required>
         
-        <label for="code_agence">Code Agence:</label>
-        <input type="text" id="code_agence" name="code_agence">
+        <label for="num_reg_com">Numéro Registre de Commerce:</label>
+        <input type="text" id="num_reg_com" name="num_reg_com" required>
+        
+        <label for="date_reg_com">Date Registre de Commerce:</label>
+        <input type="date" id="date_reg_com" name="date_reg_com" required>
         
         <input type="submit" value="Submit">
         <a href="{{ url_for('index') }}">
@@ -177,6 +176,41 @@
             <span class="text nav-text">Logout</span>
           </a>
     </form>
-    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/get_agences')
+                .then(response => response.json())
+                .then(data => {
+                    const agenceSelect = document.getElementById('agence');
+                    const codeAgenceSelect = document.getElementById('code_agence');
+
+                    data.forEach(agence => {
+                        const optionAgence = document.createElement('option');
+                        optionAgence.value = agence.intitule;  // Set the value to the agency intitule
+                        optionAgence.textContent = agence.intitule;  // Set the text to the agency intitule
+                        agenceSelect.appendChild(optionAgence);
+
+                        const optionCode = document.createElement('option');
+                        optionCode.value = agence.code;  // Set the value to the agency code
+                        optionCode.textContent = agence.code;  // Set the text to the agency code
+                        codeAgenceSelect.appendChild(optionCode);
+                    });
+
+                    // Add event listener to sync selections
+                    agenceSelect.addEventListener('change', function() {
+                        const selectedIntitule = agenceSelect.value;
+                        const selectedAgence = data.find(agence => agence.intitule === selectedIntitule);
+                        if (selectedAgence) {
+                            codeAgenceSelect.value = selectedAgence.code;
+                        }
+                    });
+
+                    // Trigger change event to set initial state
+                    agenceSelect.dispatchEvent(new Event('change'));
+                })
+                .catch(error => console.error('Error fetching agences:', error));
+        });
+    </script>
 </body>
 </html>
